@@ -66,17 +66,21 @@ def login():
             return redirect(url_for('show_entries'))
     return render_template('login.html', error=error)
 
+@app.route('/guest', methods=['GET','POST'])
+def guest():
+    error = None
+    session['logged_in'] = True
+    flash('Welcome Guest')
+    redirect(url_for('show_entries'))
+    return render_template('guest.html', error=error)
+
+
 @app.route('/logout')
 def logout():
     session.pop('logged_in', None)
     flash('You were logged out')
     return redirect(url_for('show_entries'))
 
-#@app.route('/login/guest', methods=['GET','POST'])
-#def guest():
-#    error = None
-#    if request.method == 'POST':
-#        if request.form['guest']
 
 if __name__== '__main__':
     app.run()
