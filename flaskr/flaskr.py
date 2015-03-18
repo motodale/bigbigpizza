@@ -3,7 +3,6 @@ import sqlite3
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
 from contextlib import closing
 
-
 #configuration
 DATABASE = '/tmp/flaskr.db'
 DEBUG = True
@@ -69,9 +68,13 @@ def login():
 @app.route('/guest', methods=['GET','POST'])
 def guest():
     error = None
+    #if request.method == 'POST':
+    #    if request.form['guest'] != app.config['GUEST']:
+    #      error = 'Please login or choose guest'
+    #    else:
     session['logged_in'] = True
     flash('Welcome Guest')
-    redirect(url_for('show_entries'))
+    return redirect(url_for('show_entries'))
     return render_template('guest.html', error=error)
 
 
