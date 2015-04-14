@@ -1,40 +1,50 @@
 #some imports
-import sqlite3
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
 from contextlib import closing
+from flaskext.mysql import MySQL
+
+#Database stuff
+mysql = MySQL()
+app = Flask(__name__)
+app.config['MYSQL_DATABASE_USER'] = 'root'
+app.config['MYSQL_DATABASE_PASSWORD'] = ''
+app.config['MYSQL_DATABASE_DB'] = 'bigbigpizza'
+app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+mysql.init_app(app)
 
 #configuration
-DATABASE = '/tmp/flaskr.db'
 DEBUG = True
 SECRET_KEY = 'se2015'
 USERNAME = 'admin'
 PASSWORD = 'root'
 
 #something about initializing
-app = Flask(__name__)
+#app = Flask(__name__)
 app.config.from_object(__name__)
 
 app.config.from_envvar('FLASKR_SETTINGS', silent=True)
 
-def connect_db():
-    return sqlite3.connect(app.config['DATABASE'])
+#def connect_db():
+#    return sqlite3.connect(app.config['DATABASE'])
 
-def init_db():
-    with closing(connect_db()) as db:
-        with app.open_resource('schema.sql', mode='r') as f:
-            db.cursor().executescript(f.read())
-        db.commit()
+#def init_db():
+#    with closing(connect_db()) as db:
+#        with app.open_resource('schema.sql', mode='r') as f:
+#            db.cursor().executescript(f.read())
+#        db.commit()
 
-@app.before_request
-def before_request():
-    g.db = connect_db()
+#@app.before_request
+#def before_request():
+#    g.db = connect_db()
 
-@app.teardown_request
-def teardown_request(exception):
-    db = getattr(g, 'db', None)
-    if db is not None:
-        db.close()
-
+#@app.teardown_request
+#def teardown_request(exception):
+#    db = getattr(g, 'db', None)
+#    if db is not None:
+#        db.close()
+@app.route('/createuser')
+def add_user():
+     
 @app.route('/')
 def show_entries():
     cur = g.db.execute('select title, text from entries order by id desc')
@@ -68,13 +78,8 @@ def login():
 @app.route('/guest', methods=['GET','POST'])
 def guest():
     error = None
-    #if request.method == 'POST':
-    #    if request.form['guest'] != app.config['GUEST']:
-    #      error = 'Please login or choose guest'
-    #    else:
     session['logged_in'] = True
     flash('Welcome Guest')
-    return redirect(url_for('show_entries'))
     return render_template('guest.html', error=error)
 
 
