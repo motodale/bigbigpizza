@@ -1,6 +1,6 @@
 #some imports
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
-from contextlib import closing
+#from contextlib import closing
 from flaskext.mysql import MySQL
 
 #Database stuff
@@ -44,7 +44,7 @@ app.config.from_envvar('FLASKR_SETTINGS', silent=True)
 #        db.close()
 @app.route('/createuser')
 def add_user():
-    
+    return nothing 
          
 @app.route('/')
 def show_entries():
