@@ -44,7 +44,8 @@ app.config.from_envvar('FLASKR_SETTINGS', silent=True)
 #        db.close()
 @app.route('/createuser')
 def add_user():
-     
+    
+         
 @app.route('/')
 def show_entries():
     cur = g.db.execute('select title, text from entries order by id desc')
@@ -87,7 +88,7 @@ def guest():
 def logout():
     session.pop('logged_in', None)
     flash('You were logged out')
-    return redirect(url_for('show_entries'))
+    return redirect(url_for('layout'))
 
 
 if __name__== '__main__':
