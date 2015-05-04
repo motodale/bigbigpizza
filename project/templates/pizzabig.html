@@ -1,0 +1,67 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Order page</title>
+</head>
+	<style>
+	body {
+		background-color: linen;
+		}
+	</style> 
+
+	<body>
+		<h1>Order pizza!</h1>
+			<form method="POST" action="/add_order" name="pizza" id="pizz">
+				<p><strong>Select the pizza size:</strong><pr /></p>
+		
+				<MENU>
+				<LI><INPUT type="radio" name="size" value="10" checked> Small 10-inch </LI>
+  				<LI><INPUT type="radio" name="size" value="13"> Medium 13-inch </LI>
+    				<LI><INPUT type="radio" name="size" value="16"> Large 16-inch </LI>
+    				<LI><INPUT type="radio" name="size" value="20">Big Big 20-inch </LI>
+				</MENU>
+			
+				<p>
+        <img src="BLT.jpg" alt="BLT Pizza" style="width:128px;height:128px">
+        <img src="Taco.jpg" alt="Taco Pizza" style="width:128px;height:128px">
+        <img src="supreme.jpg" alt="Supreme Pizza" style="width:128px;height:128px">
+				</p>
+				<INPUT type="radio" name="premade" value="BLT" checked> BLT Pizza <INPUT type="radio" name="premade" value="Taco" >Taco Pizza <INPUT type="radio" name="premade" value="Supreme">Supreme Pizza
+        <p>
+        <img src="Big Bad Cheese.jpg" alt="Big Bad Cheese Pizza" style="width:128px;height:128px">
+        <img src="Big Bad Pepperoni.jpg" alt="Big Bad Pepperoni Pizza" style="width:128px;height:128px">
+        <img src="Meat Lovers.jpg" alt="Meat Lovers Pizza" style="width:128px;height:128px">
+				</p>
+				<INPUT type="radio" name="premade" value="Cheese"> Big Bad Cheese <INPUT type="radio" name="premade" value="Pepperoni" >Big Bad Pepperoni <INPUT type="radio" name="premade" value="Meat"> Meat Lovers
+				<div>
+				<p>
+					<strong>Select the Toppings:</strong><br />
+						<input type="checkbox" name="toppings" id="toppings1" value="bacon" tabindex="7" />Bacon
+						<input type="checkbox" name="toppings" id="toppings2" value="beef" tabindex="8" />Beef
+						<input type="checkbox" name="toppings" id="toppings3" value="grond/beef" tabindex="9" />Grond/Beef
+						<input type="checkbox" name="toppings" id="toppings4" value="pepperoni" tabindex="10" />Pepperoni
+						<input type="checkbox" name="toppings" id="toppings5" value="mild sausage" tabindex="11" />Mild Sausage<br />
+						<input type="checkbox" name="toppings" id="toppings6" value="italian sausage" tabindex="12" />Italian Sausage
+						<input type="checkbox" name="toppings" id="toppings7" value="chicken" tabindex="13" />Chicken
+						<input type="checkbox" name="toppings" id="toppings8" value="mushroom" tabindex="14" />Mushroom
+						<input type="checkbox" name="toppings" id="toppings9" value="canadian bacon" tabindex="15" />Canadian Bacon
+						<input type="checkbox" name="toppings" id="toppings10" value="pineapple" tabindex="16" />Pineapple<br />
+						<input type="checkbox" name="toppings" id="toppings11" value="onions" tabindex="17" />Onions
+						<input type="checkbox" name="toppings" id="toppings12" value="black olive" tabindex="18" />Black Olive
+						<input type="checkbox" name="toppings" id="toppings13" value="green pepper" tabindex="19" />Green Pepper
+				</p>
+				</div>
+				<p>
+					<strong>Name:</strong><input type="text" name="name" id="name" size="20" tabindex="20" /><br />
+					<strong>Phone:</strong><input type="text" name="phone" id="phone" size="20" tabindex="21" /><br />
+					<textarea rows="2" cols="30" name="message" id="message" tabindex="12" />Message:</textarea>
+				</p>
+				<p>	
+					<input type="submit" value="Send" name="submit" id="submit"/>
+					<input type="reset" value="Reset" name="reset" id="reset" />
+				</p>
+			</form>
+
+	</body>
+</html>
