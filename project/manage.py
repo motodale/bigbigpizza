@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 from flask.ext.script import Manager, Shell, Server
-from flaskr import app
+from pizza import app
 
 manager = Manager(app)
 manager.add_command("runserver", Server())

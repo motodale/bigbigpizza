@@ -37,19 +37,25 @@ def teardown_request(exception):
 
 @app.route('/')
 def show_entries():
-    cur = g.db.execute('select title, text from entries order by id desc')
-    entries = [dict(title=row[0], text=row[1]) for row in cur.fetchall()]
-    return render_template('show_entries.html', entries=entries)
+    return render_template('layout.html')
 
-@app.route('/add', methods=['POST'])
-def add_entry():
-    if not session.get('logged_in'):
-        abort(401)
-    g.db.execute('insert into entries(title, text) values (?, ?)',
-                  [request.form['title'], request.form['text']])
+@app.route('/payment/<int:orderId>', methods=['POST'])
+def add_payment(orderId):
+    g.db.execute('insert into payment(orderId, creditcard, Month, Year, seccode, zip) values (?, ?, ?, ?, ?)',
+                  [request.form['orderId'], request.form['creditcard'], request.form['Month'], request.form['Year'], request.form['seccode'], request.form['zip']])
     g.db.commit()
-    flash('New entry was succesfully posted')
-    return redirect(url_for('show_entries'))
+    flash('Thanks for your order')
+    return render('layout.html')
+
+@app.route('/add_order', methods=['GET','POST'])
+def add_order():
+   # if not session.get('logged_in'):
+    #    abort(401)
+    g.db.execute('insert into pizzaorder(piesize, premade, toppings, name, phone, message) values (?, ?, ?, ?, ?, ?, ?)',
+                  [request.form['piesize'], request.form['premade'], request.form['toppings'], request.form['name'], request.form['phone'], request.form['message']])
+    g.db.commit()
+    flash('pizza ordered')
+    return render_template('Payment.html', )
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -62,8 +68,8 @@ def login():
         else:
             session['logged_in'] = True
             flash('You were logged in')
-            return redirect(url_for('show_entries'))
-    return render_template('login.html', error=error)
+            return redirect(url_for('pizzabig.html'))
+    return render_template('pizzabig.html', error=error)
 
 @app.route('/guest', methods=['GET','POST'])
 def guest():

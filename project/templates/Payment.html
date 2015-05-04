@@ -1,0 +1,60 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Payment Page</title>
+</head>
+	<style>
+	body {
+		background-color: linen;
+		}
+	</style> 
+
+	<body>
+		<h1>Payment! </h1>
+			<form method="POST" action="/payment" name="pizza" id="pizz">
+				<p><strong>Payment Information:</strong><pr /></p>
+		
+				<MENU>
+				<INPUT type="radio" name="option" value="CoD"> Pay with Cash upon Delivery
+  				<INPUT type="radio" name="option" value="CC"> Pay Now with Credit Card 
+				</MENU>
+			
+				
+				<p>
+					<strong>Credit Card Number:</strong><input type="text" name="Credit Card" id="name" size="30" tabindex="30" /><br />
+					<strong>Expriation Date:
+					<select name="DOBMonth">
+						<option> - Month - </option>
+						<option value="January">January</option>
+						<option value="Febuary">Febuary</option>
+						<option value="March">March</option>
+						<option value="April">April</option>
+						<option value="May">May</option>
+						<option value="June">June</option>
+						<option value="July">July</option>
+						<option value="August">August</option>
+						<option value="September">September</option>
+						<option value="October">October</option>
+						<option value="November">November</option>
+						<option value="December">December</option>
+					</select>
+					<select name="DOBYear">
+						<option> - Year - </option>
+						<option value="2015">2015</option>
+						<option value="2016">2016</option>
+						<option value="2017">2017</option>
+						<option value="2018">2018</option>
+					</select>
+					<strong>Security Code:</strong><input type="text" name="Security Code" size="3" tabindex="3" /><br />
+					<strong>Billing Zip Code:</strong><input type="text" name="Billing Zip Code" size="5" tabindex="5" /><br />
+					
+				</p>
+				<p>	
+					<input type="submit" value="Send" name="submeit" id="submit"/>
+					<input type="reset" value="Reset" name="rest" id="reset" />
+				</p>
+			</form>
+
+	</body>
+</html>

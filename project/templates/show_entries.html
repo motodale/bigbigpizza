@@ -1,22 +1,12 @@
 {% extends "layout.html" %}
 {% block body %}
   {% if session.logged_in %}
-    <form action="{{ url_for('add_entry') }}" method=post class=add-entry>
-      <dl>
-         <input type="radio" value="big" name="size" id="size" checked tabindex="1" />Big<br />
-         <input type="radio" value="medium" name="size" id="size" tabindex="2" />Medium<br /> 
-          <input type="radio" value="small" name="size" id="size" tabindex="3" />Small<br />
-        <dt>Title:
-        <dd><input type=text size=30 name=title>
-        <dt>Text:
-        <dd><textarea name=text rows=5 cols=40></textarea>
-        <dd><input type=submit value=Share>
-      </dl>
+    <form action="{{ url_for('add_order') }}" method=post class=add-order>
     </form>
   {% endif %}
-  <ul class=entries>
+  <ul class=pizzaorders>
   {% for entry in entries %}
-    <li><h2>{{ entry.title }}</h2>{{ entry.text|safe }}
+  <li>{{ pizzaorder.piesize }{ pizzaorder.premade }{pizzaorder.toppings}{pizzaorder.name}{pizzaorder.phone}{pizzaorder.message}}
   {% else %}
     <li><em>Unbelievable.  No entries here so far</em>
   {% endfor %}
