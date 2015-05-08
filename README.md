@@ -8,6 +8,7 @@ To run this app, install python flask. This is required and it will require pyth
 be installed. From a terminal run:
 ```
 pip install flask
+pip install Flask-Script
 ```
 
 Navigate to this project directory and type "python" in your terminal.
