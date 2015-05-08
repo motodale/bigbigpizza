@@ -1,18 +1,12 @@
 #some imports
+import sqlite3
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
-#from contextlib import closing
-from flaskext.mysql import MySQL
 
-#Database stuff
-mysql = MySQL()
-app = Flask(__name__)
-app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = ''
-app.config['MYSQL_DATABASE_DB'] = 'bigbigpizza'
-app.config['MYSQL_DATABASE_HOST'] = 'localhost'
-mysql.init_app(app)
+from contextlib import closing
+
 
 #configuration
+DATABASE = '/tmp/flaskr.db'
 DEBUG = True
 SECRET_KEY = 'se2015'
 USERNAME = 'admin'

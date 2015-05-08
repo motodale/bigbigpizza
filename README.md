@@ -3,7 +3,7 @@ software engineering app for class
 
 clone this and navigate to the directory.
 
-
+This is preferd to be run on Linux or Mac. Windows is unsupported in this case.
 To run this app, install python flask. This is required and it will require python to
 be installed. From a terminal run:
 ```
@@ -27,3 +27,12 @@ then in a browser go to
 ```
 http://localhost:5000
 ```
+
+
+
+Logging in as a guest will tell you success, but log out causes error.
+If that happens go to
+```
+localhost:5000/login
+```
+
